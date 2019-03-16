@@ -7,10 +7,10 @@
         </tr>
       </thead>
       <tr *ngFor="let transaction of transactionHistory">
-        <td>{{transaction.type.replace('Sell', sell).replace('Purchase', buy).replace('Reset', reset)}}</td>
+        <td>{{transaction.type?.toLowerCase().replace('sell', sell).replace('purchase', buy).replace('reset', reset)}}</td>
         <td>{{transaction.symbol}}</td>
         <td>{{transaction.amount}}</td>
-        <td>{{transaction.createdAt.replace('T', '\t') | slice:0:19}}</td>
+        <td>{{transaction.createdAt?.replace('T', '\t') | slice:0:19}}</td>
       </tr>
     </table>
   </div>

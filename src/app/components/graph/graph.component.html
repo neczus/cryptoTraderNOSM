@@ -1,3 +1,11 @@
-<p>
-  graph works!
-</p>
+<div>
+    <canvas *ngIf="chartData.length>0"
+        baseChart
+        [chartType]="'line'"
+        [datasets]="chartData"
+        [labels]="chartLabels"
+        [options]="chartOptions"
+        [legend]="true"
+        (chartClick)="onChartClick($event)">
+    </canvas>
+  </div>

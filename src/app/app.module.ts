@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { ChartsModule } from 'ng2-charts';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -12,6 +13,7 @@ import { UserComponent } from './components/user/user.component';
 import { TransactionComponent } from './components/transactions/transaction/transaction.component';
 
 import { CryptoService } from './services/crypto-service/crypto-service';
+import { RefreshService } from './services/refresh-service/refresh-service';
 
 @NgModule({
   declarations: [
@@ -25,9 +27,11 @@ import { CryptoService } from './services/crypto-service/crypto-service';
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
+    ChartsModule,
     FormsModule
   ],
   providers: [
+    RefreshService,
     CryptoService
   ],
   bootstrap: [AppComponent]

@@ -21,6 +21,11 @@ export class CryptoService {
   constructor(private http: HttpClient) {
 }
 
+  getExchange(type) {
+    this.header=this.addTokenToHeader();
+    return this.http.get(this.baseLink+this.exchange+"/"+type, {headers:this.header});
+  }
+
   getBalance() {
     this.header=this.addTokenToHeader();
     return this.http.get(this.baseLink+this.account, {headers:this.header});
