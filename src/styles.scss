@@ -1,1 +1,22 @@
 /* You can add global styles to this file, and also import other style files */
+.w3-row-padding {
+    padding: 6px 10px;
+}
+
+.buySell {
+    padding: 0 0 10px;
+
+    .w3-input {
+        width: 60%;
+        margin: 0 20px;
+    }
+
+    .w3-button {
+        width: 100%;
+        color: #fff !important;
+    }
+}
+
+.transaction-container {
+    padding: 0.1em 16px 14px;
+}

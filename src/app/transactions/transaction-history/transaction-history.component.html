@@ -1,0 +1,16 @@
+<div class="w3-card-4 w3-hover-shadow w3-container transaction-container">
+    <h4><b>{{title}}</b></h4> 
+    <table class="w3-table-all w3-hoverable">
+      <thead>
+        <tr class="w3-blue">
+          <th *ngFor="let tblH of tableHeaders">{{tblH}}</th>
+        </tr>
+      </thead>
+      <tr *ngFor="let transaction of transactionHistory">
+        <td>{{transaction.type.replace('Sell', sell).replace('Purchase', buy).replace('Reset', reset)}}</td>
+        <td>{{transaction.symbol}}</td>
+        <td>{{transaction.amount}}</td>
+        <td>{{transaction.createdAt.replace('T', '\t') | slice:0:19}}</td>
+      </tr>
+    </table>
+  </div>
