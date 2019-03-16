@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { CryptoService } from '../crypto-service/crypto-service.component';
+import { CryptoService } from '../../services/crypto-service/crypto-service';
 
 @Component({
   selector: 'user',
@@ -21,7 +21,7 @@ export class UserComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.balance = this.service.getBalance();
+    this.service.getBalance().subscribe(response => this.balance = response);    
   }
 
 }

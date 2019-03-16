@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { CryptoService } from 'src/app/crypto-service/crypto-service.component';
+import { CryptoService } from 'src/app/services/crypto-service/crypto-service';
 
 @Component({
   selector: 'transaction-history',
@@ -16,11 +16,11 @@ export class TransactionHistoryComponent implements OnInit {
   sell="Eladás";
   reset="Alaphelyzetre állítás"
 
-  constructor(service: CryptoService) {
-    this.transactionHistory = service.getHistory();
+  constructor(private service: CryptoService) {
   }
 
   ngOnInit() {
+    this.service.getHistory().subscribe(response => this.transactionHistory = response);
   }
 
 }

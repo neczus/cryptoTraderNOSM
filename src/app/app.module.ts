@@ -1,17 +1,17 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
-import { TransactionHistoryComponent } from './transactions/transaction-history/transaction-history.component';
-import { GraphComponent } from './graph/graph.component';
-import { UserComponent } from './user/user.component';
-import { TransactionComponent } from './transactions/transaction/transaction.component';
+import { TransactionHistoryComponent } from './components/transactions/transaction-history/transaction-history.component';
+import { GraphComponent } from './components/graph/graph.component';
+import { UserComponent } from './components/user/user.component';
+import { TransactionComponent } from './components/transactions/transaction/transaction.component';
 
-import { CryptoService } from './crypto-service/crypto-service.component';
-
+import { CryptoService } from './services/crypto-service/crypto-service';
 
 @NgModule({
   declarations: [
@@ -24,7 +24,8 @@ import { CryptoService } from './crypto-service/crypto-service.component';
   imports: [
     BrowserModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [
     CryptoService
