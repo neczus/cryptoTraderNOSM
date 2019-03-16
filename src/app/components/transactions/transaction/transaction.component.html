@@ -1,19 +1,21 @@
 <div class="container buySell">
   <h4><b>{{title}}</b></h4> 
   <div class="w3-row">
-    <div class="w3-quarter">
-      <select [(ngModel)]="Symbol" class="w3-select" name="symbol">
+    <div class="w3-col l3 m6 s12">
+      <select [(ngModel)]="Symbol" class="w3-select inputs" name="symbol">
         <option value="USD">USD</option>
         <option value="BTC">BTC</option>
         <option value="ETH">ETH</option>
         <option value="XRP">XRP</option>
       </select> 
     </div>
-    <div class="w3-half">
-      <input [(ngModel)]="Amount" class="w3-input" type="number" step="0.000001" placeholder="10">
+    <div class="w3-col l1 m1"></div>
+    <div class="w3-col l5 m6 s12">
+      <input [(ngModel)]="Amount" class="w3-input inputs" type="number" step="0.000001" placeholder="10">
     </div>
-    <div class="w3-quarter">
-      <button (click)="postTransaction()" class="w3-button w3-round w3-{{btnColor}} w3-hover-{{btnColorHover}}">{{title}}</button>
+    <div class="w3-col l1"></div>
+    <div class="w3-col l4 m12 s12">
+      <button (click)="postTransaction()" class=" inputs w3-button w3-round w3-{{btnColor}} w3-hover-{{btnColorHover}}">{{title}}</button>
     </div>
   </div>
 </div>

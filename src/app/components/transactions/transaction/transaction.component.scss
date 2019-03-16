@@ -1,13 +1,17 @@
 .buySell {
     padding: 0 0 10px;
 
-    .w3-input {
-        width: 80%;
-        margin: 0 20px;
+    .w3-select {
+        border-bottom: none;
     }
 
     .w3-button {
-        width: 100%;
+        width: 95%;
         color: #fff !important;
+        float: right;
+    }
+
+    .inputs{
+        margin: 5px 0;
     }
 }
