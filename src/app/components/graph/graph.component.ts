@@ -18,11 +18,11 @@ export class GraphComponent implements OnInit {
       this.service.getExchange("btc"),
       this.service.getExchange("eth"),
       this.service.getExchange("xrp")
-    ).subscribe(([btc, eth, xrp]: any) => {console.log(btc, eth, xrp) 
+    ).subscribe(([btc, eth, xrp]: any) => {
       this.chartData = [
-        { data: btc ? this.transformDataValue(btc.history) : [], label: btc.symbol ? btc.symbol : "" },
-        { data: eth ? this.transformDataValue(eth.history) : [], label: eth.symbol ? eth.symbol : "" },
-        { data: xrp ? this.transformDataValue(xrp.history) : [], label: xrp.symbol ? xrp.symbol : "" }
+        { data: btc ? this.transformDataValue(btc) : [], label: btc.symbol ? btc.symbol : "" },
+        { data: eth ? this.transformDataValue(eth) : [], label: eth.symbol ? eth.symbol : "" },
+        { data: xrp ? this.transformDataValue(xrp) : [], label: xrp.symbol ? xrp.symbol : "" }
       ];
       this.chartLabels = this.transformDataKey(btc.history || [], eth.history || [], xrp.history || []);
     });
@@ -36,9 +36,9 @@ export class GraphComponent implements OnInit {
     console.log(event);
   }
 
-  transformDataValue(history) {
-    console.log(Object.keys(history));
-    return Object.values(history);
+  transformDataValue(type) {
+    console.log(Object.values(history));
+    return Object.values(type.history).map((item:number) => item - type.currentRate);
   }
 
   transformDataKey(hstryBTC, hstryETH, hstryXRP) {
