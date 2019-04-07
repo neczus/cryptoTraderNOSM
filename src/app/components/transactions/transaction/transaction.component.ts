@@ -37,6 +37,7 @@ export class TransactionComponent implements OnInit {
       this.refresh.updateTransactionHistory(new TransactionHistory(this.Symbol, this.Amount, this.type));
       this.Amount = 0;
       this.Symbol = "BTC";
-    });
+    },
+    error => {alert(error)});
   }
 }

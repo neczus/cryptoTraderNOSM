@@ -24,7 +24,8 @@ export class TransactionHistoryComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.service.getHistory().subscribe(response => this.transactionHistory = response);
+    this.service.getHistory().subscribe(response => {this.transactionHistory = response},
+      error => {alert(error)});
     this.transactionHistorySubscription = this.refresh.refreshObservable.subscribe(
       response => {
         const newTransaction = {

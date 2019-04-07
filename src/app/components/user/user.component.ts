@@ -35,7 +35,8 @@ export class UserComponent implements OnInit, OnDestroy {
     this.getBalance();  
     this.transactionHistorySubscription = this.refresh.refreshObservable.subscribe(() => {
         this.getBalance();
-      });  
+      },
+      error => {alert(error)});  
   }
   
   ngOnDestroy() {
@@ -43,13 +44,15 @@ export class UserComponent implements OnInit, OnDestroy {
   }
 
   getBalance() {
-    this.service.getBalance().subscribe(response => this.balance = response);
+    this.service.getBalance().subscribe(response => {this.balance = response},
+      error => {alert(error)});
   }
 
   postTransaction() {
     this.service.postTransaction(this.Type, this.Amount, this.Symbol).subscribe(response => {
       this.refresh.updateTransactionHistory(new TransactionHistory(this.Symbol, this.Amount, this.Type));
-    });
+    },
+    error => {alert(error)});
   }
 
 }

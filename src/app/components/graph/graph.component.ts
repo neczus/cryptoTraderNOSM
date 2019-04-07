@@ -25,7 +25,8 @@ export class GraphComponent implements OnInit {
         { data: xrp ? this.transformDataValue(xrp) : [], label: xrp.symbol ? xrp.symbol : "" }
       ];
       this.chartLabels = this.transformDataKey(btc.history || [], eth.history || [], xrp.history || []);
-    });
+    },
+    error => {alert(error)});
   }
 
   chartOptions = {
