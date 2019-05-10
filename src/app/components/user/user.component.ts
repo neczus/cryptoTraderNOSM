@@ -34,7 +34,8 @@ export class UserComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.getBalance();  
     this.transactionHistorySubscription = this.refresh.refreshObservable.subscribe(() => {
-        this.getBalance();
+      console.log("bakfitty")  
+      this.getBalance();
       },
       error => {alert(error)});  
   }

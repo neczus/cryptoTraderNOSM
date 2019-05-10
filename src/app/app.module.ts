@@ -14,6 +14,7 @@ import { TransactionComponent } from './components/transactions/transaction/tran
 
 import { CryptoService } from './services/crypto-service/crypto-service';
 import { RefreshService } from './services/refresh-service/refresh-service';
+import { RobotService } from './services/robot-service/robot-service';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { RefreshService } from './services/refresh-service/refresh-service';
   ],
   providers: [
     RefreshService,
-    CryptoService
+    CryptoService,
+    RobotService
   ],
   bootstrap: [AppComponent]
 })

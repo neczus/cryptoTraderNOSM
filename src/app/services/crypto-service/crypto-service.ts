@@ -1,8 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { Transaction } from '../../core/classes/transaction';
-import { Observable, throwError } from 'rxjs';
+import { Observable, throwError, forkJoin } from 'rxjs';
 import { retry, catchError } from 'rxjs/operators';
+import { RobotService } from '../robot-service/robot-service';
+import { RefreshService } from '../refresh-service/refresh-service';
 
 @Injectable()
 export class CryptoService {
@@ -20,7 +22,22 @@ export class CryptoService {
 
   header;
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private robotService:RobotService, private refreshService:RefreshService) {
+    setInterval(()=>{
+      forkJoin([this.getExchange("btc"),this.getExchange("xrp"),this.getExchange("eth")]).subscribe(
+        (response) => {
+          this.refreshService.updateTransactionHistory(true);
+          this.robotService.updateTransactionHistory(response).subscribe((sellBuy)=>
+            {
+              if (sellBuy[0]) {
+              this.postTransaction(sellBuy[0].Type, sellBuy[0].Amount,sellBuy[0].Symbol).subscribe((asd)=>console.log(asd));
+              }
+              if (sellBuy[1]) {
+                this.postTransaction(sellBuy[1].Type, sellBuy[1].Amount, sellBuy[1].Symbol).subscribe((asd)=>console.log(asd));
+              }
+            }
+      )});
+    }, 60000);
 }
 
   getExchange(type) {
